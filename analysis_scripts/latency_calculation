@@ -1,0 +1,61 @@
+import os
+import json
+
+# Map raw model names to pretty names
+MODEL_NAME_MAP = {
+    "deepseek_deepseek-chat": "DeepSeek-DeepSeek-Chat",
+    "x-ai_grok-2-vision-1212": "xAI-Grok-2-Vision-1212",
+    "x-ai_grok-2-1212": "xAI-Grok-2-1212",
+    "meta-llama_llama-4-maverick": "Meta-Llama-Llama-4-Maverick",
+    "mistralai_mistral-medium-3": "MistralAI-Mistral-Medium-3",
+    "openai_gpt-4.1-mini": "OpenAI-GPT-4.1-mini",
+    "google_gemini-2.5-flash-preview-05-20": "Google-Gemini-2.5-Flash-Preview-05-20",
+    "anthropic_claude-opus-4": "Anthropic-Claude-Opus-4",
+    "anthropic_claude-sonnet-4": "Anthropic-Claude-Sonnet-4",
+    # Add more as needed
+}
+MODEL_NAME_MAP = {
+    "anthropic_claude-opus-4":        "Claude Opus 4 (Anthropic)",
+    "anthropic_claude-sonnet-4":      "Claude Sonnet 4 (Anthropic)",
+    "google_gemini-2.5-flash-preview-05-20": "Gemini 2.5 Flash (Google)",
+    "meta-llama_llama-4-maverick":    "Llama-4 Maverick (Meta)",
+    "mistralai_mistral-medium-3":     "Mistral Medium 3 (Mistral AI)",
+    "openai_gpt-4.1-mini":            "GPT-4.1 Mini (OpenAI)",
+    "x-ai_grok-2-1212":               "Grok 2 (X.ai)",
+    "x-ai_grok-2-vision-1212":        "Grok 2 Vision (X.ai)",
+    "deepseek_deepseek-chat": "DeepSeek-Chat",
+}
+def pretty_model_name(raw):
+    # Remove trailing timestamp if present
+    parts = raw.split('_')
+    if parts[-1].isdigit() or (len(parts[-1]) == 8 and parts[-1].isdigit()):
+        raw = '_'.join(parts[:-1])
+    return MODEL_NAME_MAP.get(raw, raw.replace('_', '-'))
+
+def collect_processing_times(root_dir, prefix):
+    times = {}
+    for dirpath, _, files in os.walk(root_dir):
+        for file in files:
+            if file.startswith(f"{prefix}_annotations_") and file.endswith('.json'):
+                # Model name is after prefix and before timestamp
+                parts = file.split('_')
+                model_name = '_'.join(parts[2:-1])
+                file_path = os.path.join(dirpath, file)
+                with open(file_path, 'r') as f:
+                    data = json.load(f)
+                    for res in data.get('results', []):
+                        t = res.get('processing_time')
+                        if t is not None:
+                            times.setdefault(model_name, []).append(t)
+    return times
+
+def main(loro_root, lomo_root):
+    loro_times = collect_processing_times(loro_root, 'loro')
+    lomo_times = collect_processing_times(lomo_root, 'lomo')
+    print(loro_times)
+    print(lomo_times)
+
+if __name__ == "__main__":
+    loro_root = "loro_annotation_results"
+    lomo_root = "lomo_annotation_results"
+    main(loro_root, lomo_root)

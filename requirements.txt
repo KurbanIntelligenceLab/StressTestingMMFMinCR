@@ -1,0 +1,9 @@
+numpy
+pandas
+requests
+Pillow
+openai
+rouge-score
+nltk
+tqdm
+pydantic
