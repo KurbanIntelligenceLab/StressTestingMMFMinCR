@@ -1,6 +1,6 @@
 # Stress-Testing Multimodal Foundation Models for Crystallographic Reasoning
 
-This repository contains the code and analysis scripts for the paper "Stress-Testing Multimodal Foundation Models for Crystallographic Reasoning" submitted to ACL 2025 Workshop on Towards Knowledgeable Foundation Models. The project evaluates the performance of various multimodal foundation models on crystallographic reasoning tasks, with a particular focus on Minimum Critical Radius (MinCR) calculations.
+This repository contains the code and analysis scripts for the paper "Stress-Testing Multimodal Foundation Models for Crystallographic Reasoning" submitted to ACL 2025 Workshop on Towards Knowledgeable Foundation Models. The project evaluates the performance of various multimodal foundation models on crystallographic reasoning tasks.
 
 ## Dataset
 
