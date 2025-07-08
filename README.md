@@ -1,10 +1,13 @@
-# Stress-Testing Multimodal Foundation Models for Crystallographic Reasoning
+# Stress-Testing Multimodal Foundation Models for Crystallographic Reasoning - ACL 2025
+### by Can Polat, Hasan Kurban, Erchin Serpedin, and Mustafa Kurban
 
-This repository contains the code and analysis scripts for the paper "Stress-Testing Multimodal Foundation Models for Crystallographic Reasoning" submitted to ACL 2025 Workshop on Towards Knowledgeable Foundation Models. The project evaluates the performance of various multimodal foundation models on crystallographic reasoning tasks.
+This repository contains the code and analysis scripts for the paper "Stress-Testing Multimodal Foundation Models for Crystallographic Reasoning". The project evaluates the performance of various multimodal foundation models on crystallographic reasoning tasks.
+
+[Pre-print](https://arxiv.org/abs/2506.13051)
 
 ## Dataset
 
-The dataset used in this project is available at: [Dataset Link](https://figshare.com/s/4704f61d44a1f2ca63c5)
+The dataset used in this project is available at: [Dataset Link](https://figshare.com/s/4704f61d44a1f2ca63c5), CC-BY 4.0
 
 ## Project Structure
 
@@ -26,7 +29,7 @@ The dataset used in this project is available at: [Dataset Link](https://figshar
 
 1. Clone the repository:
 ```bash
-git clone [repository-url]
+git clone git@github.com:KurbanIntelligenceLab/StressTestingMMFMinCR.git
 cd StressTestingMMFMinCR
 ```
 
@@ -84,10 +87,10 @@ python analysis_scripts/hallucination_and_compliance.py
 If you use this code in your research, please cite our paper:
 
 ```bibtex
-@article{stress_testing_mmf_2025,
+@article{polat2025stress,
   title={Stress-Testing Multimodal Foundation Models for Crystallographic Reasoning},
-  author={[Authors]},
-  journal={ACL 2025 Workshop on Towards Knowledgeable Foundation Models},
+  author={Polat, Can and Kurban, Hasan and Serpedin, Erchin and Kurban, Mustafa},
+  journal={arXiv preprint arXiv:2506.13051},
   year={2025}
 }
 ```
